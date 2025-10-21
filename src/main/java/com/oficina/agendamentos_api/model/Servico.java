@@ -2,6 +2,7 @@ package com.oficina.agendamentos_api.model;
 
 import jakarta.persistence. *;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -19,15 +20,15 @@ public class Servico {
     @Column(nullable = false)
     private String descricao;
 
-    @Column(nullable = false)
-    private String preco;
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal preco;
 
     @Column(nullable = false)
     private LocalDateTime criado_em;
 
     public Servico(){}
 
-    public Servico(String nome, String descricao, String preco, LocalDateTime criado_em){
+    public Servico(String nome, String descricao, BigDecimal preco, LocalDateTime criado_em){
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
@@ -43,8 +44,8 @@ public class Servico {
     public String getEmail(){return descricao;}
     public void setEmail(String descricao) {this.descricao = descricao;}
 
-    public String getPreco(){return preco;}
-    public void setPreco(String preco) {this.preco = preco;}
+    public BigDecimal getPreco(){return preco;}
+    public void setPreco(BigDecimal preco) {this.preco = preco;}
 
     public LocalDateTime getCriado_em(){return criado_em;}
     public void setCriado_em(LocalDateTime criado_em) {this.criado_em = criado_em;}
