@@ -41,8 +41,8 @@ public class Servico {
     public String getNome(){return nome;}
     public void setNome(String nome) {this.nome = nome;}
 
-    public String getEmail(){return descricao;}
-    public void setEmail(String descricao) {this.descricao = descricao;}
+    public String getDescricao(){return descricao;}
+    public void setDescricao(String descricao) {this.descricao = descricao;}
 
     public BigDecimal getPreco(){return preco;}
     public void setPreco(BigDecimal preco) {this.preco = preco;}

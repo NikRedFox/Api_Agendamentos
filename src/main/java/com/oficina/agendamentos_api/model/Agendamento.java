@@ -23,38 +23,56 @@ public class Agendamento {
     private Servico servico;
 
     @Column(nullable = false)
-    private String observacoes;
+    private LocalDateTime dataAgendada;
 
     @Column(nullable = false)
-    private String descricao;
+    private String observacoes;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal preco;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private StatusAgendamento status;
 
     @Column(nullable = false)
     private LocalDateTime criado_em;
 
     public Agendamento(){}
 
-    public Agendamento(String observacoes, String descricao, BigDecimal preco, LocalDateTime criado_em){
+    public Agendamento(Cliente cliente, Servico servico, LocalDateTime dataAgendada,
+                       String observacoes, StatusAgendamento status, LocalDateTime criado_em){
+        this.cliente = cliente;
+        this.servico = servico;
+        this.dataAgendada = dataAgendada;
         this.observacoes = observacoes;
-        this.descricao = descricao;
-        this.preco = preco;
+        this.status = status;
         this.criado_em = criado_em;
     }
 
-    public Long setAgendamentoId(){return agendamentoId;}
-    public void getAgendamentoId(Long agendamentoId) {this.agendamentoId = agendamentoId;}
+    public Long getAgendamentoId(){return agendamentoId;}
+    public void setAgendamentoId(Long agendamentoId) {this.agendamentoId = agendamentoId;}
 
-    public String setObservacoes(){return observacoes;}
-    public void getObservacoes(String observacoes) {this.observacoes = observacoes;}
+    public LocalDateTime getDataAgendada(){return  dataAgendada;}
+    public void setDataAgendada(LocalDateTime dataAgendada) {this.dataAgendada = dataAgendada;}
 
-    public String getEmail(){return descricao;}
-    public void setEmail(String descricao) {this.descricao = descricao;}
+    public String getObservacoes(){return observacoes;}
+    public void setObservacoes(String observacoes) {this.observacoes = observacoes;}
 
-    public BigDecimal getPreco(){return preco;}
-    public void setPreco(BigDecimal preco) {this.preco = preco;}
+    public StatusAgendamento getStatus(){return status;}
+    public void setStatus(StatusAgendamento status) {this.status = status;}
 
     public LocalDateTime getCriado_em(){return criado_em;}
     public void setCriado_em(LocalDateTime criado_em) {this.criado_em = criado_em;}
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+    public void setServico(Servico servico) {
+        this.servico = servico;
+    }
 }
